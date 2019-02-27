@@ -1,0 +1,5 @@
+* Simple task
+* Have a ongoing reminder [^500:remind me tomorrow morning]
+* Completed reminder [!500:remind me on Monday noon]
+* Plain reminder [remind me on Monday noon]
+* first with @Person
