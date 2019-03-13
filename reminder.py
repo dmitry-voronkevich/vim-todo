@@ -300,7 +300,9 @@ def process_todo_file(settings_file: str) -> Sequence[TodoEntry]:
     try:
         fd = open(settings_file)
         in_reminder_section = True
+        lineno = 0
         for line in fd:
+            lineno += 1
             if line.startswith(end_of_tasks):
                 in_reminder_section = False
             if in_reminder_section:
@@ -321,7 +323,7 @@ def process_todo_file(settings_file: str) -> Sequence[TodoEntry]:
                         res = process_reminder_ast(res)
                         yield TodoEntry(line, not block.startswith('^'), res, None)
                     except Exception as e:
-                        yield TodoEntry(line, True, None, str(e))
+                        yield TodoEntry(line, True, None, str(e).replace('line 1', 'line '+str(lineno)))
                 else:
                     yield TodoEntry(line, False, None, None)
             else:
