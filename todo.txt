@@ -1,6 +1,18 @@
 * Simple task
 * Have a ongoing reminder [^500:remind me tomorrow morning]
 * Completed reminder [!500:remind me on Monday noon]
+* Minutes [remind me in 5 minutes]
 * One new [remind me in 2 days]
 * Plain reminder [remind me on Monday noon]
 * first with @Person
+
+Root project
+* Sub project [est 5]
+* Another one [after 1]
+* Yet another one [after 2][p1]
+
+-->
+Root project[=est 5][=p1]
+* [id=1] Sub project [est 5][=p1]
+* [id=2] Another one [after 1] [=p1]
+* [id=3] Yet another one [after 2][p1]

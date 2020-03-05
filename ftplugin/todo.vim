@@ -23,7 +23,7 @@ function TODOAleHandle(buffer, lines) abort
 endfunction
 
 call ale#linter#Define("todo", {
-\   'name': 'reminder.py',
+\   'name': 'python/todo.py',
 \   'output_stream': 'stderr',
 \   'executable': 'python3',
 \   'command_callback': 'TODOAleGetCommand',
