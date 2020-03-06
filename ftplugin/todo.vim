@@ -2,7 +2,8 @@ nnoremap gd ^r+ddGp<c-o>:w<cr>
 nnoremap gc ^r-ddGp<c-o>:w<cr>
 
 function! TODOAleGetCommand(buffer) abort
-    return 'python3 /Users/zloy/dev/vim-todo/reminder.py --verify --file %t' 
+    let s:script_folder_path = expand( '<sfile>:p:h' )
+    return 'python3 "' . s:script_folder_path .'/python/todo.py" --verify --file %t' 
 endfunction
 
 function TODOAleHandle(buffer, lines) abort
@@ -23,9 +24,9 @@ function TODOAleHandle(buffer, lines) abort
 endfunction
 
 call ale#linter#Define("todo", {
-\   'name': 'python/todo.py',
+\   'name': 'todo.py',
 \   'output_stream': 'stderr',
 \   'executable': 'python3',
-\   'command_callback': 'TODOAleGetCommand',
-\   'callback': 'TODOAleHandle',
+\   'command': function('TODOAleGetCommand'),
+\   'callback': function('TODOAleHandle'),
 \})
